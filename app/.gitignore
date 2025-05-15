@@ -1,0 +1,11 @@
+.idea
+*.pyc
+*.swp
+*/__pycache__
+secops/sql/secops.data-development.sql
+secops/clients/cli/logs/client.log
+secops/clients/cli/config.py
+api/settings_development.py
+.DS_Store
+.vscode
+todo

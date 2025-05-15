@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+if [ "$1" == "configure" ]; then
+    printf "\n* Configuring Python...\n"
+    pip install djangorestframework~=3.14.0 --break-system-packages
+    pip install pyyaml~=6.0.2 --break-system-packages
+    pip install GitPython~=3.1.43 --break-system-packages
+    pip install kubernetes~=32.0.1 --break-system-packages
+
+    chown -R root:secops /var/log/secops-client
+fi
+
+exit 0

@@ -1,0 +1,240 @@
+#!/bin/bash
+
+set -e
+
+function System()
+{
+    base=$FUNCNAME
+    this=$1
+
+    # Declare methods.
+    for method in $(compgen -A function)
+    do
+        export ${method/#$base\_/$this\_}="${method} ${this}"
+    done
+
+    # Properties list.
+    ACTION="$ACTION"
+}
+
+# ##################################################################################################################################################
+# Public
+# ##################################################################################################################################################
+
+#
+# Void System_run().
+#
+function System_run()
+{
+    if [ "$ACTION" == "rpm" ]; then
+        if ! which rpm > /dev/null; then
+            echo "rpm not found, try: apt install rpm"
+            exit 1
+        fi
+
+        System_definitions
+        System_cleanup
+
+        System_codeCollect
+        System_codeConfig
+        System_codeFilesPermissions
+
+        System_redhatFilesSetup
+        System_rpmCreate
+        System_cleanup
+
+        echo "Created /tmp/$rpmPackage"
+    else
+        exit 1
+    fi
+}
+
+# ##################################################################################################################################################
+# Private static
+# ##################################################################################################################################################
+
+function System_checkEnvironment()
+{
+    if [ -f /etc/os-release ]; then
+        if ! grep -q 'Debian GNU/Linux 12 (bookworm)' /etc/os-release; then
+            return 1
+        fi
+    else
+        return 1
+    fi
+
+    return 0
+}
+
+
+function System_definitions()
+{
+    declare -g debPackageRelease
+    declare -g debCurrentGitCommit
+
+    declare -g projectName
+    declare -g workingFolder
+    declare -g workingFolderPath
+
+    if [ -f DEBIAN-PKG/deb.release ]; then
+        # Get program version from the release file.
+        debPackageRelease=$(echo $(cat DEBIAN-PKG/deb.release))
+        rpmPackageVer=$(awk -F'-' '{print $1}' DEBIAN-PKG/deb.release)
+        rpmPackageRel=$(awk -F'-' '{print $2}' DEBIAN-PKG/deb.release)
+    else
+        echo "Error: deb.release missing."
+        echo "Usage: bash RH/make-rh-release.sh --action rpm"
+        exit 1
+    fi
+
+    shortName="armonisya"
+    rpmArch="noarch"
+
+    git config --global --add safe.directory $(pwd)
+    debCurrentGitCommit=$(git log --pretty=oneline | head -1 | awk '{print $1}')
+
+    projectName="armonisya"
+    workingFolder="/tmp"
+    workingFolderPath="${workingFolder}/${projectName}-${rpmPackageVer}"
+
+    rpmPackage=${projectName}-${rpmPackageVer}-${rpmPackageRel}.${rpmArch}.rpm
+    mainSpec=${projectName}.spec
+}
+
+
+function System_cleanup()
+{
+    if [ -n "$workingFolderPath" ]; then
+        if [ -d "$workingFolderPath" ]; then
+            rm -fR "$workingFolderPath"
+        fi
+    fi
+}
+
+
+function System_codeCollect()
+{
+    mkdir -p $workingFolderPath/usr/lib/api-secops
+
+    # Copy files.
+    cp -R ../../../api $workingFolderPath/usr/lib/api-secops/
+    cp -R ../../../secops $workingFolderPath/usr/lib/api-secops/
+
+    if [ -f ../../../license.txt ]; then
+        cp ../../../license.txt $workingFolderPath/usr/lib/api-secops/
+    fi
+
+    mkdir -p $workingFolderPath/var/log/secops-client
+
+    # Remove __pycache__ folders.
+    rm -fR $(find $workingFolderPath/usr/lib/api-secops/ -name __pycache__)
+
+    rm -fR $workingFolderPath/usr/lib/api-secops/secops/clients/cli/DEBIAN-PKG
+    rm -fR $workingFolderPath/usr/lib/api-secops/secops/clients/cli/RH-PKG
+    rm -fR $workingFolderPath/usr/lib/api-secops/secops/clients/cli/client.log
+    mv -f $workingFolderPath/usr/lib/api-secops/secops/clients/cli/config-example.py $workingFolderPath/usr/lib/api-secops/secops/clients/cli/config.py
+
+    rm -fR $workingFolderPath/usr/lib/api-secops/api/settings_development.py
+    rm -fR $workingFolderPath/usr/lib/api-secops/secops/sql/secops.data-development.sql
+
+    echo "JWT_TOKEN = {\"publicKey\": \"\"}" > $workingFolderPath/usr/lib/api-secops/api/settings_jwt.py
+}
+
+
+function System_codeConfig()
+{
+    # Clean settings.
+    sed -i "s/^SECRET_KEY =.*/SECRET_KEY = \"not.used\"/g" $workingFolderPath/usr/lib/api-secops/api/settings.py
+}
+
+
+function System_codeFilesPermissions()
+{
+    # Forcing standard permissions (755 for folders, 644 for files, owned by root:root).
+    chown -R 0:0 $workingFolderPath/usr/lib/api-secops
+    find $workingFolderPath/usr/lib/api-secops -type d -exec chmod 0755 {} \;
+    find $workingFolderPath/usr/lib/api-secops -type f -exec chmod 0644 {} \;
+
+    touch $workingFolderPath/var/log/secops-client/client.log
+    chmod 770 $workingFolderPath/var/log/secops-client
+    chmod 660 $workingFolderPath/var/log/secops-client/client.log
+}
+
+
+function System_redhatFilesSetup()
+{
+    # Create the rpmbuild tree in $workingFolder.
+    # The path must be passed to rpmbuild with the --define "_topdir <path>" option
+    rpmDirs="RPMS BUILD SOURCES SPECS SRPMS BUILDROOT/${projectName}-${rpmPackageVer}-${rpmPackageRel}.x86_64"
+    for dir in $rpmDirs; do
+        mkdir -p "${workingFolder}/rpmbuild/$dir"
+    done
+
+    # Copy spec files to build the rpm package.
+    cp RH-PKG/REDHAT/*.spec ${workingFolder}/rpmbuild/SPECS
+
+    # Set version, release, source tar in the main spec file. 
+    sed -i "s/RH_VERSION/$rpmPackageVer/g" ${workingFolder}/rpmbuild/SPECS/${mainSpec}
+    sed -i "s/RH_RELEASE/$rpmPackageRel/g" ${workingFolder}/rpmbuild/SPECS/${mainSpec}
+    sed -i "s/RPM_SOURCE/${projectName}.tar/g" ${workingFolder}/rpmbuild/SPECS/${mainSpec}
+
+    # Create the source tar file for the rpm.
+    cd $workingFolder
+    tar pcf ${projectName}.tar ${projectName}-${rpmPackageVer}
+    mv ${projectName}.tar ${workingFolder}/rpmbuild/SOURCES
+    cd -
+
+    # Build the file specs section. List files only, not directories.
+    echo "%files" > ${workingFolder}/rpmbuild/SPECS/files.spec
+    tar tf ${workingFolder}/rpmbuild/SOURCES/${projectName}.tar | grep -Ev '/$' | sed "s#${projectName}-${rpmPackageVer}##g" >> ${workingFolder}/rpmbuild/SPECS/files.spec
+    
+    # Empty folders need to be in the files.spec list.
+    tar tf ${workingFolder}/rpmbuild/SOURCES/${projectName}.tar | grep -E 'var/log/automation/.+' | sed -e "s#${projectName}-${rpmPackageVer}##g" -e 's@/$@@g' >> ${workingFolder}/rpmbuild/SPECS/files.spec
+}
+
+
+function System_rpmCreate()
+{
+    rpmbuild --define "_topdir ${workingFolder}/rpmbuild" -ba ${workingFolder}/rpmbuild/SPECS/${mainSpec}
+    mv ${workingFolder}/rpmbuild/RPMS/${rpmArch}/${rpmPackage} /tmp
+    rm -fr ${workingFolder}/rpmbuild
+}
+
+# ##################################################################################################################################################
+# Main
+# ##################################################################################################################################################
+
+ACTION=""
+
+# Must be run as root.
+ID=$(id -u)
+if [ $ID -ne 0 ]; then
+    echo "This script needs super cow powers."
+    exit 1
+fi
+
+# Parse user input.
+while [[ $# -gt 0 ]]; do
+    key="$1"
+
+    case $key in
+        --action)
+            ACTION="$2"
+            shift
+            shift
+            ;;
+
+        *)
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$ACTION" ]; then
+    echo "Missing parameters. Use --action rpm."
+else
+    System "system"
+    $system_run
+fi
+
+exit 0

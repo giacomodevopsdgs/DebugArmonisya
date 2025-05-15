@@ -1,0 +1,11 @@
+        [
+            {
+                "platform": "BPER_DummyPlatform",
+                "address": "-",
+                "name": "db_password_user.123456.1",
+                "userName": "user1",
+                "secret": "aVerySecretSecret1",
+                "encoded": false,
+                "key": "db_password"
+            }
+        ]

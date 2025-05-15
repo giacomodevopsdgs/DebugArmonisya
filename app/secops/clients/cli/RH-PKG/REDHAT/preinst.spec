@@ -1,0 +1,13 @@
+%pre
+#!/bin/bash
+
+if ! getent group | awk -F':' '{print $1}' | grep -qsecops; then
+    gid=300 # if gid=300 is used, try +1.
+    while getent group | awk -F':' '{print $3}' | grep -q $gid; do
+        let gid='gid +1';
+    done
+
+    groupadd -g $gid secops
+fi
+
+exit 0

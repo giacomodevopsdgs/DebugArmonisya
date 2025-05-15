@@ -1,0 +1,7 @@
+Package: armonisya
+Version: RELEASE
+Architecture: all
+Depends: python3 (>= 3.9), python3-pip
+Maintainer: m.buratto@lumit.it
+Description: Armonisya, a DevSecOps Identity Security helper
+

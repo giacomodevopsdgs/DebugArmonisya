@@ -1,0 +1,1620 @@
+{
+	"info": {
+		"_postman_id": "6dac25c2-1595-46b2-a9a8-caf483585ed9",
+		"name": "api-secops",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Assets",
+			"item": [
+				{
+					"name": "asset",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/asset/1/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"asset",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assets",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/assets/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"assets",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assets",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"technology\": \"git\",\n        \"fqdn\": \"bitbucket.lumit.it\",\n        \"protocol\": \"ssh\",\n        \"port\": 7999,\n        \"path\": \"/\",\n        \"tlsverify\": true,\n        \"datacenter\": \"Verona\",\n        \"environment\": \"Test\",\n        \"position\": \"RACK 2\",\n        \"username\": \"git\",\n        \"repokey\": \"\",\n        \"userkey\": \"\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/assets/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"assets",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "asset",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"protocol\": \"http\",\n        \"port\": 80\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/asset/1/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"asset",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "asset",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/asset/4/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"asset",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Permissions",
+			"item": [
+				{
+					"name": "authorizations",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "If-None-Match",
+								"value": "c485212f298abe5f8b867ca42617292a",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/authorizations/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"authorizations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "permissions",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "If-None-Match",
+								"value": "c485212f298abe5f8b867ca42617292a",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/permissions/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"permissions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "permissions",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"identity_group_identifier\": \"cn=groupstaff,cn=users,dc=lab,dc=local\",\n        \"role\": \"readonly\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/permissions/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"permissions",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "permission",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"identity_group_identifier\": \"cn=groupstaff,cn=users,dc=lab,dc=local\",\n        \"role\": \"admin\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/permission/1/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"permission",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "permission",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/permission/2/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"permission",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "identity-groups",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "If-None-Match",
+								"value": "c485212f298abe5f8b867ca42617292a",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/identity-groups/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"identity-groups",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "identity-groups",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"groupLocalNew\",\n        \"identity_group_identifier\": \"cn=groupStaff,cn=users,dc=lab,dc=localNew\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/identity-groups/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"identity-groups",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "identity-group",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"name\": \"groupStaffModified\",\n        \"identity_group_identifier\": \"cn=groupStaff,cn=users,dc=lab,dc=localNewModified\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/identity-group/cn=groupStaff,cn=users,dc=lab,dc=localNew/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"identity-group",
+								"cn=groupStaff,cn=users,dc=lab,dc=localNew",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "identity-group",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/identity-group/cn=groupStaff,cn=users,dc=lab,dc=localNewModified/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"identity-group",
+								"cn=groupStaff,cn=users,dc=lab,dc=localNewModified",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "roles",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "If-None-Match",
+								"value": "c485212f298abe5f8b867ca42617292a",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/roles/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"roles",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "roles  (privileges)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "If-None-Match",
+								"value": "c485212f298abe5f8b867ca42617292a",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/roles/?related=privileges",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"roles",
+								""
+							],
+							"query": [
+								{
+									"key": "related",
+									"value": "privileges"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CyberArk",
+			"item": [
+				{
+					"name": "Safe",
+					"item": [
+						{
+							"name": "safe",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/safe/BPER__SAFE_1/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"safe",
+										"BPER__SAFE_1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "safes",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/safes/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"safes",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "safes",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"numberOfVersionsRetention\": null,\n        \"numberOfDaysRetention\": 0,\n        \"oLACEnabled\": false,\n        \"autoPurgeEnabled\": true,\n        \"managingCPM\": \"passwordManager\",\n        \"safeName\": \"JustATestSafe\",\n        \"description\": \"This is just a test safe\",\n        \"location\": \"\\\\\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/safes/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"safes",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "safe",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"safeName\": \"JustATestSafe\",\n        \"description\": \"This is just a test safe renamed\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/safe/JustATestSafe/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"safe",
+										"JustATestSafe",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "safe",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/safe/BPER__SAFE_1/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"safe",
+										"BPER__SAFE_1",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "safe members",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/safe/BPER__SAFE_1/members/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"safe",
+										"BPER__SAFE_1",
+										"members",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "safe members",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"memberName\": \"LOB_Demo\",\n        \"memberType\": \"User\",\n        \"membershipExpirationDate\": null,\n        \"isExpiredMembershipEnable\": false,\n        \"isPredefinedUser\": false,\n        \"isReadOnly\": true,\n        \"permissions\": {\n            \"useAccounts\": true,\n            \"retrieveAccounts\": true,\n            \"listAccounts\": true,\n            \"addAccounts\": true,\n            \"updateAccountContent\": false,\n            \"updateAccountProperties\": false,\n            \"initiateCPMAccountManagementOperations\": false,\n            \"specifyNextAccountContent\": false,\n            \"renameAccounts\": false,\n            \"deleteAccounts\": false,\n            \"unlockAccounts\": false,\n            \"manageSafe\": false,\n            \"manageSafeMembers\": false,\n            \"backupSafe\": false,\n            \"viewAuditLog\": false,\n            \"viewSafeMembers\": false,\n            \"accessWithoutConfirmation\": false,\n            \"createFolders\": false,\n            \"deleteFolders\": false,\n            \"moveAccountsAndFolders\": false,\n            \"requestsAuthorizationLevel1\": false,\n            \"requestsAuthorizationLevel2\": false\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/safe/BPER__SAFE_1/members/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"safe",
+										"BPER__SAFE_1",
+										"members",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "safe accounts",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/safe/BPER__SAFE_1/accounts/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"safe",
+										"BPER__SAFE_1",
+										"accounts",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "safe accounts (filter)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/safe/BPER__SAFE_1/accounts/?filter=platformAccountProperties.Encoded eq Yes&filter=platformAccountProperties.Tier eq be",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"safe",
+										"BPER__SAFE_1",
+										"accounts",
+										""
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "platformAccountProperties.Encoded eq Yes"
+										},
+										{
+											"key": "filter",
+											"value": "platformAccountProperties.Tier eq be"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "safe accounts",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"platformId\": \"BPER_DummyPlatform\",\n        \"safeName\": \"BPER__SAFE_1\",\n        \"name\": \"db_anagrafe_user.123456.1\",\n        \"address\": \"-\",\n        \"userName\": \"user\",\n        \"secretType\": \"password\",\n        \"secret\": \"aVerySecretSecret\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/safe/BPER__SAFE_1/accounts/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"safe",
+										"BPER__SAFE_1",
+										"accounts",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Account",
+					"item": [
+						{
+							"name": "account",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/account/96_3/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"account",
+										"96_3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "accounts",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/accounts/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"accounts",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "account",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"name\": \"Application-BPER_DummyPlatform\",\n        \"address\": \"uno.due.tre.quattro\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/account/143_3/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"account",
+										"143_3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "account (secret)",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"secret\": \"aVerySecretSecret12!!!!!!!\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/account/146_3/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"account",
+										"146_3",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "account",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwttoken}}",
+										"type": "default",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{secopsBaseUrl}}/secops/cyberark/account/96_3/",
+									"host": [
+										"{{secopsBaseUrl}}"
+									],
+									"path": [
+										"secops",
+										"cyberark",
+										"account",
+										"96_3",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Conjur",
+			"item": [
+				{
+					"name": "users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/conjur/users/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"conjur",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "hosts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/conjur/hosts/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"conjur",
+								"hosts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "groups",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/conjur/groups/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"conjur",
+								"groups",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "layers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/conjur/layers/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"conjur",
+								"layers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "policies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/conjur/policies/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"conjur",
+								"policies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "policies",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "- !policy\n  id: environments/kubernetes/automation\n  # owner: !group run-admins\n \n- !policy\n  id: environments/kubernetes/automation/projects\n  # owner: !group run-admins\n \n- !policy\n  id: environments/kubernetes/automation/grants",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/conjur/policies/branch/root/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"conjur",
+								"policies",
+								"branch",
+								"root",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "variables",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/conjur/variables/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"conjur",
+								"variables",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "variable",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/conjur/variable/AutomationVault/db/password/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"conjur",
+								"variable",
+								"AutomationVault",
+								"db",
+								"password",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "variable secrets",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"secrets\": \"loreimipsum\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/conjur/variable/AutomationVault/db/password/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"conjur",
+								"variable",
+								"AutomationVault",
+								"db",
+								"password",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "webservices",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/conjur/webservices/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"conjur",
+								"webservices",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rotate api key",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/conjur/rotate-apikey/host:demo-app/conjur-demo-app/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"conjur",
+								"rotate-apikey",
+								"host:demo-app",
+								"conjur-demo-app",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Kubernetes",
+			"item": [
+				{
+					"name": "pods",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/kubernetes/pods/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"kubernetes",
+								"pods",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UseCases",
+			"item": [
+				{
+					"name": "BPER // CyberArk secret insertion",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"safe\": {\n            \"name\": \"BPER__SAFE_1\",\n            \"description\": \"This is the description for the Safe\",\n            \"member\": \"LOB_Demo\"\n        },\n        \"accounts\": [\n            {\n                \"platform\": \"BPER_DummyPlatform\",\n                \"address\": \"-\",\n                \"name\": \"db_password_user.123456.1\",\n                \"userName\": \"user1\",\n                \"secret\": \"aVerySecretSecret1\",\n                \"encoded\": false,\n                \"key\": \"db_password\"\n            },\n            {\n                \"platform\": \"BPER_DummyPlatform\",\n                \"address\": \"-\",\n                \"name\": \"db_password_user.123456.2\",\n                \"userName\": \"user2\",\n                \"secret\": \"aVerySecretSecret2\",\n                \"encoded\": false,\n                \"key\": \"db_password\"\n            },\n            {\n                \"platform\": \"BPER_DummyPlatform\",\n                \"address\": \"-\",\n                \"name\": \"certificate.123456.1\",\n                \"userName\": \"user3\",\n                \"secret\": \"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\",\n                \"encoded\": true,\n                \"key\": \"certificate\"\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/usecases/bper/cyberark-insert/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"usecases",
+								"bper",
+								"cyberark-insert",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BPER // CyberArk secret association + k8s",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"vault\": {\n            \"name\": \"VaultDemo\"\n        },\n        \"safe\": {\n            \"name\": \"BPER__SAFE_1\",\n            \"member\": \"LOB_Demo\"\n        },\n        \"accounts\": [\n            {\n                \"uuid\": \"186_3@1744363122\",\n                \"slot\": \"auto\",\n                \"force\": false\n            },\n            {\n                \"uuid\": \"186_4@1744363125\",\n                \"slot\": \"6\",\n                \"force\": false\n            },\n            {\n                \"uuid\": \"186_5@1744363126\",\n                \"slot\": \"9\",\n                \"force\": false\n            }\n        ],\n        \"app\": {\n            \"name\": \"pba2-be\",\n            \"namespace\": \"pba2-svil-evo\"\n        },\n        \"ticket\": \"TICKET001\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/usecases/bper/cyberark-modify/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"usecases",
+								"bper",
+								"cyberark-modify",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conjur align",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"vault\": {\n            \"name\": \"root\"\n        },\n        \"conjur\": {\n            \"caBundleBase64\": \"LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURTekNDQWpPZ0F3SUJBZ0lVVWdhelVoRlQvSDB4UmZCTmRWRFFyNE50RjdJd0RRWUpLb1pJaHZjTkFRRUwKQlFBd1F6RVFNQTRHQTFVRUNnd0haR2R6TFd4aFlqRVNNQkFHQTFVRUN3d0pRMjl1YW5WeUlFTkJNUnN3R1FZRApWUVFEREJKamIyNXFkWEl0WTJ4MWMzUmxjaTVzWVdJd0hoY05NalV3TkRJME1EazFPVFE0V2hjTk16VXdOREl5Ck1EazFPVFE0V2pBZE1Sc3dHUVlEVlFRRERCSmpiMjVxZFhJdFkyeDFjM1JsY2k1c1lXSXdnZ0VpTUEwR0NTcUcKU0liM0RRRUJBUVVBQTRJQkR3QXdnZ0VLQW9JQkFRRERZMHlOY3FNaXY3MVRGRGN3bDZxMXh6dEdiUXArdy9TNwo2Q09wOEpaVkxocmtkcWF1alRaVU9DMjFWZXEwRzJIcGIxdmZqd2VVV0NQc28zeXkvdGo3cjVkcTFHckdlR05pClJvMEZSbDRGQ2xCdzl3a2h3MXFGLzJ0ejI1RFV2dDlSVWpzRWIwRVhlays1K200TGl5dnVITnluNHY4V3lBZWgKaEZhUkJHejRvQWNxMVJpNHV5NkxCQ3hIRHhXaTgxS3UwblNQeWQzTzZWV2Q3TU83a0FDQ1JRajRxVTNCVkh3cwpCWmx0cktmOEFFaDk4d095a1ZjM1BwZTNONTZOOCtLUmRHeDBSQ3NpSzF6TTlGZzdaWXpBYXNqV29wMldNcVJhCk96WnAyclJOL2xQRUQ2S1FVT1NycDgwQ2svRXFPZG9OUU5hNlEzZjVuS0xDUDg0Q2NPbi9BZ01CQUFHalhUQmIKTUE0R0ExVWREd0VCL3dRRUF3SUZvREFkQmdOVkhRNEVGZ1FVMmptajdsNXJTdzB5VmIvdmxXQVlrSy9ZQndrdwpLZ1lEVlIwUkJDTXdJWUlTWTI5dWFuVnlMV05zZFhOMFpYSXViR0ZpZ2d0amIyNXFkWEl5TG14aFlqQU5CZ2txCmhraUc5dzBCQVFzRkFBT0NBUUVBS2ZhSWtWa3NvWDdKZFB5TkQ1bnAxKzVyNFJtdSsxZ240ZWh0cjVVSVlQbTUKd2E2aXREZWtUaG1RVTd3dWVPRjZ5ZldJa0JtQzRFdDAvMCtCOE5ZOFc2OUQzVzdjRldqMkNTcEtta1QrSEI1NQpPSDZ2YzhBampIWlJQV2t4L2ZEaHRxcWh0ZnQzb3prSEpuUnpGT0xrWjcxd0tJbEtNdjZtN1RSa3R0eHgrZ25tCm9vbDJZV2loZzJkalh3Q0VUSG9lRjgrTVBjbkdVbENrK1JZVDFacFBmSnJscm1HRTFpd0FxV1Izd3JBS1IzWjQKbVk0RVI1aFg4QWtYQkF3U3U3YVh6UVc0Y3o1ajZoTTFKWURzOUduOUQwaTU4bFVSZmI2NTREZXVOQWlRSno0eQpSd1hwL1VwazBNRGh3WTc4ckdXVitHQyt5bFAvcnpISmNIMlhENmJkWEE9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCi0tLS0tQkVHSU4gQ0VSVElGSUNBVEUtLS0tLQpNSUlEbnpDQ0FvZWdBd0lCQWdJVVcxZ01RM1B4VUFSWlUrNmZPcHBSeGJocWdid3dEUVlKS29aSWh2Y05BUUVMCkJRQXdRekVRTUE0R0ExVUVDZ3dIWkdkekxXeGhZakVTTUJBR0ExVUVDd3dKUTI5dWFuVnlJRU5CTVJzd0dRWUQKVlFRRERCSmpiMjVxZFhJdFkyeDFjM1JsY2k1c1lXSXdIaGNOTWpVd05ESTBNRGsxT1RReldoY05NelV3TkRJeQpNRGsxT1RReldqQkRNUkF3RGdZRFZRUUtEQWRrWjNNdGJHRmlNUkl3RUFZRFZRUUxEQWxEYjI1cWRYSWdRMEV4Ckd6QVpCZ05WQkFNTUVtTnZibXAxY2kxamJIVnpkR1Z5TG14aFlqQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQUQKZ2dFUEFEQ0NBUW9DZ2dFQkFKUkxEd09laWVwK0pRZkoyUVY1cFo0L2RsZDQwZkQ1c1V5b3hhOS8xWnBZOXdPWAp6anJlbEJYMWt2eTV2ZFdDV1BJUjZHeTQ4QjJpYTd3OXFaK1Bna3NNYmFoQzE5UTJPM24vVHdkbU1OdVpuNGdECjFNb3pJNGNIY2c2MzZRa0Z1NUozRFNvRWFnM0ZPUUJYbVgvSktHWExjQ0wyeGpTUEhqUGVoTm5UbEJiRHlPM0cKQXBzQ1d0QzVsQ0xnelZycXl4ZHF2bitncmsvM2hVZXpmS0ZMbFdkejFKV21JRkl2djZuQVp1Zlc5c1l2OFdBcAorZEFON1M2T0VBYmw1SkpMdS9FcWhiV0lzM292UXdTa0FRRmN4dGk0UmZLT1BTcDVaUXk3S1VQaE9EeS9ZM3l2CkI0R1lrYnNwcUpQdEVJNkJkRkJJdi84U3ZGWldjajFRNHo2UVA3RUNBd0VBQWFPQmlqQ0JoekFxQmdOVkhSRUUKSXpBaGdoSmpiMjVxZFhJdFkyeDFjM1JsY2k1c1lXS0NDMk52Ym1wMWNqSXViR0ZpTUIwR0ExVWREZ1FXQkJUcApNZWxlVjVwN0xNVFZWaFpZbGdmaW1MZkp6akFmQmdOVkhTTUVHREFXZ0JUcE1lbGVWNXA3TE1UVlZoWllsZ2ZpCm1MZkp6akFNQmdOVkhSTUVCVEFEQVFIL01Bc0dBMVVkRHdRRUF3SUI1akFOQmdrcWhraUc5dzBCQVFzRkFBT0MKQVFFQUdML3NmaXozZFJsNm5vUUZpVEUrSFJRdDVDVlJpbFB0blE0Z2VUaW9wQmhQWWprS1dYZTMrR28zWmFDZwpGcW5mY1VoWmtsQTM3U1FhWHFocld3aWtZbStJL0N4Mlc0ellOeHRzeEdzc2RiUXB1QkNxTlovdFRFdDRhMDVVCmdEMVBuOThVT0duaS9mdXNQVTdmVE1zRmFtMm5nbHp2SUpnR3JNbWMvOVZHZ3c3dEYvS0ZvOWhXd2k1MXFzSjQKM2l6OHYyRlk4K29QZFJwc2kvV2ZPL3BySTEzVFNBRVlhc2VoZTdvbkZLdHkzVEwwcnZEdEZ6blNTVUZFNFhSZAo4Q1NOS2src2hFVi9XOVBxWERnNWFpUDNKRnBkTVJDQUtwT0s0UjhuM1BGdTJUSzlkY2ZGSTMwQ1pMbUVxM1lJClVqeWIyV29mRXdnU21GRExFV3BNZGdRWmdBPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=\",\n            \"hostId\": \"environments/kubernetes/automation/projects/demo-app/conjur-demo-app\",\n            \"variable\": \"environments/kubernetes/automation/database/password\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/usecases/conjur/align-git-policy/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"usecases",
+								"conjur",
+								"align-git-policy",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conjur verify",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwttoken}}",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{secopsBaseUrl}}/secops/usecases/conjur/verify-git-policy/",
+							"host": [
+								"{{secopsBaseUrl}}"
+							],
+							"path": [
+								"secops",
+								"usecases",
+								"conjur",
+								"verify-git-policy",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "secopsBaseUrl",
+			"value": "http://10.0.111.32/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "jwttoken",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

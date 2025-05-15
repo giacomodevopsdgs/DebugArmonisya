@@ -1,0 +1,6 @@
+%postun
+#!/bin/bash
+
+rm -fR $(find /usr/lib/api-secops/ -name __pycache__)
+
+exit 0

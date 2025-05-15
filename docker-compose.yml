@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "5678:5678"
+    volumes:
+      - ./app:/app
+      - ./config/accounts:/tmp/accounts
+      - ./config/client.log:/var/log/secops-client/client.log
+      - ./config/config.py://app/secops/clients/cli/config.py      
+    extra_hosts:
+      - "democyberark.demo.local:10.32.21.33"      
+    environment:
+      DEBUG_SCRIPT: 'secops/clients/cli/bper-client.py --cyberark "safes list"'    

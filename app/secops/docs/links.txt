@@ -1,0 +1,5 @@
+CyberArk API:
+    https://docs.cyberark.com/pam-self-hosted/latest/en/content/webservices/implementing%20privileged%20account%20security%20web%20services%20.htm
+
+Conjur API:
+    https://docs.cyberark.com/conjur-open-source/latest/en/content/developer/lp_rest_api.htm
