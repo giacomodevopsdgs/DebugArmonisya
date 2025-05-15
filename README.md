@@ -37,7 +37,7 @@ git clone git@github.com:<your-username>/bper-client-debug.git
 cd bper-client-debug
 ```
 
-### 2. Ask For a Working and place it @ 
+### 2. Ask For a Working and place it @ config\config.py
 
 
 ### 3. Build and launch the container
@@ -97,9 +97,3 @@ docker-compose down
 docker-compose build --no-cache
 docker-compose up
 ```
-
----
-
-## 📄 License
-
-MIT — feel free to fork and adapt.
